@@ -1,0 +1,15 @@
+--- a/src/ap/hostapd.c
++++ b/src/ap/hostapd.c
+@@ -3378,8 +3378,11 @@ hostapd_interface_init_bss(struct hapd_i
+ 		}
+ 	}
+ 
+-	wpa_printf(MSG_INFO, "Configuration file: %s (phy %s)%s",
++	if (CONFIG_MSG_MIN_PRIORITY <= MSG_DEBUG){
++		wpa_printf(MSG_INFO, "Configuration file: %s (phy %s)%s",
+ 		   config_fname, phy, iface ? "" : " --> new PHY");
++	}
++
+ 	if (iface) {
+ 		struct hostapd_config *conf;
+ 		struct hostapd_bss_config **tmp_conf;
